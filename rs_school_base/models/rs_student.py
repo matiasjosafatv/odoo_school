@@ -11,6 +11,9 @@ from odoo.exceptions import UserError, ValidationError
 
 class RsStudent(models.Model):
     _inherit = 'res.partner'
-
+    
     rs_student = fields.Boolean('Student?')
     
+
+  
+   
