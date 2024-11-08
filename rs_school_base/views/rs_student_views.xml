@@ -10,8 +10,9 @@
             <sheet>
                 <group>
                     <field name="name"/>     
-                    <field name="image_1920" widget="image"/>      
-                </group>
+                    <field name="image_1920" widget="image"/>   
+<!--                     <field name="rs_blood_type"/>  
+ -->                </group>
                 <!-- Agregar el Notebook con la pestaña de "Contacts & Addresses" -->
                 <notebook colspan="4">
                     <page string="Contacts &amp; Addresses" name="contact_addresses" autofocus="autofocus">
