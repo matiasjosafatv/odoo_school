@@ -22,6 +22,9 @@ class RsStudent(models.Model):
         ('o_positive', 'O+'),
         ('o_negative', 'O-'),
         ('ab_positive', 'AB+'),
-        ('ab_negative', 'AB-')]
+        ('ab_negative', 'AB-'),]
     )
-    rs_teacher = fields.Boolean('Teacher?')
+    
+    # rs_teacher = fields.Boolean('Teacher?')
+    
+    

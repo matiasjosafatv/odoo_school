@@ -1,0 +1,51 @@
+<odoo>
+    <!-- Vista de lista para rs.class -->
+    <record id="view_rs_class_list" model="ir.ui.view">
+        <field name="name">rs.class.list</field>
+        <field name="model">rs.class</field>
+        <field name="arch" type="xml">
+            <list string="Courses">
+                <field name="course_name"/>
+                <field name="responsible_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario para rs.class -->
+    <record id="view_rs_class_form" model="ir.ui.view">
+        <field name="name">rs.class.form</field>
+        <field name="model">rs.class</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <group>
+                        <field name="course_name"/>
+                        <field name="description"/>
+                        <field name="responsible_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Sessions">
+                            <field name="session_ids">
+                                <list string="Sessions">
+                                    <field name="session_name"/>
+                                    <field name="start_date"/>
+                                    <field name="duration"/>
+                                    <field name="seats"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción para el modelo rs.class -->
+    <record id="rs_class_action" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">rs.class</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+   
+</odoo>

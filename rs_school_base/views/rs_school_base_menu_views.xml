@@ -14,4 +14,9 @@
 
     <menuitem id="rs_teacher_menu_act" name="Teacher" parent="rs_school_teacher_menu_categ" action="rs_teacher_action" sequence="10"/>
 
+    <!-- Menú para acceder a rs.registration -->
+    <menuitem id="rs_registration_menu_act" name="Registrations" parent="rs_school_classroom_menu_categ" action="rs_registration_action" sequence="10"/>
+
+     <!-- Menú para acceder a rs.class -->
+    <menuitem id="rs_class_menu_act" name="Courses" parent="rs_school_classroom_menu_categ" action="rs_class_action" sequence="20"/>
 </odoo>

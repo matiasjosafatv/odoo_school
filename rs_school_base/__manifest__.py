@@ -50,7 +50,9 @@
         ],
     },
     'data': [
-        
+        'security/ir.model.access.csv',
+        "views/rs_class_views.xml",
+        "views/rs_registration_views.xml",
         "views/rs_student_views.xml",
         "views/rs_teacher_views.xml",
         "views/rs_school_base_menu_views.xml",

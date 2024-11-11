@@ -1,0 +1,56 @@
+<odoo>
+    <!-- Vista de lista para rs.registration -->
+    <record id="view_rs_registration_list" model="ir.ui.view">
+        <field name="name">rs.registration.list</field>
+        <field name="model">rs.registration</field>
+        <field name="arch" type="xml">
+            <list string="Registrations">
+                <field name="session_name"/>
+                <field name="start_date"/>
+                <field name="duration"/>
+                <field name="seats"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario para rs.registration -->
+    <record id="view_rs_registration_form" model="ir.ui.view">
+        <field name="name">rs.registration.form</field>
+        <field name="model">rs.registration</field>
+        <field name="arch" type="xml">
+            <form string="Registration">
+            <header>
+                <field name="active" invisible="1"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done" options="{'clickable': '1'}" />
+            
+            </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <group>
+                        <field name="session_name"/>
+                        <field name="start_date"/>
+                        <field name="duration"/>
+                        <field name="seats"/>
+                    </group>
+                    <group>
+                        <field name="instructor_id" 
+                                domain="[('rs_teacher', '=', True)]"
+       context="{'default_rs_teacher': True, 'form_view_ref': 'rs_school_base.rs_teacher_view_form'}"/>
+                        <field name="course_id"/>
+                        <field name="attendee_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción para el modelo rs.registration -->
+    <record id="rs_registration_action" model="ir.actions.act_window">
+        <field name="name">Registrations</field>
+        <field name="res_model">rs.registration</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    
+</odoo>
