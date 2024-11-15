@@ -6,11 +6,14 @@
         <field name="arch" type="xml">
             <list string="Registrations">
                 <field name="session_name"/>
+                <field name="instructor_id" optional="hide" />
                 <field name="start_date"/>
                 <field name="duration"/>
                 <field name="seats"/>
-                <field name="attendees_count"/>                        
+                <field name="attendees_count" optional="show" />                        
                 <field name="state"/>
+                <field name="attendee_ids" optional="hide" widget="many2many_tags" />
+                
             </list>
         </field>
     </record>
@@ -46,6 +49,47 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <!-- rs.registration search view -->
+    <record id="rs_registration_view_search" model="ir.ui.view">
+        <field name="name">rs_registration.view.search</field>
+        <field name="model">rs.registration</field>
+        <field name="arch" type="xml">
+            <search string="Search Description">
+                <field name="session_name" string="Instructor or Atendee" 
+                filter_domain="['|', ('attendee_ids.name', 'ilike', self), ('instructor_id.name', 'ilike', self)]"
+                />
+                <field name="duration"/>
+                <field name="attendees_count"/>                        
+                <separator/>         
+                
+                <field name="instructor_id"/>                
+                <filter string="Duration >5"
+                    name="filter_duration"
+                    domain="[('duration','>',5)]"
+                />
+                
+                <group string="Group By" >
+                    <filter string="State"
+                    name="filter_status"
+                    domain="[]"
+                    context="{'group_by' : 'state'}"
+                    />           
+                    <separator/>         
+                    <filter string="Start Date" name="group_by_start_date"                        
+                        context="{'group_by': 'start_date:week'}"
+                        />                    
+                        
+                </group>
+                <searchpanel>
+                    <field name="state" select="multi" icon="fa-cogs" string="State" />
+                    <field name="instructor_id" select="multi" icon="fa-users" string="Instructor" />
+                    <field name="attendee_ids" select="multi" icon="fa-users" string="Attendee" />
+                </searchpanel>
+
+            </search>
         </field>
     </record>
 
