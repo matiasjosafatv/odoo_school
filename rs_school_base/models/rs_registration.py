@@ -28,6 +28,8 @@ class RsRegistration(models.Model):
  
 	end_date = fields.Date(string="End Date", store=True, compute='get_end_date',inverse='set_end_date')
  
+	rs_test = fields.Boolean(string='')
+	
 	@api.onchange('start_date')
 	def _onchange_start_date(self):
 		if self.start_date:
