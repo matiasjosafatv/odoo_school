@@ -31,6 +31,7 @@
             </header>
                 <sheet>
                     <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+
                     <group>
                         <field name="session_name"/>
                         <field name="start_date"/>
@@ -43,7 +44,7 @@
                     <group>
                         <field name="instructor_id" 
                                 domain="[('rs_teacher', '=', True)]"
-       context="{'default_rs_teacher': True, 'form_view_ref': 'rs_school_base.rs_teacher_view_form'}"/>
+                                context="{'default_rs_teacher': True, 'form_view_ref': 'rs_school_base.rs_teacher_view_form'}"/>
                         <field name="course_id"/>
                         <field name="attendee_ids" widget="many2many_tags"/>
                     </group>
@@ -71,6 +72,11 @@
                     domain="[('duration','>',5)]"
                 />
                 
+                <filter string="Archived"
+                    name="filter_archived"
+                    domain="[('active', '=', False)]"
+                />
+
                 <group string="Group By" >
                     <filter string="State"
                     name="filter_status"
