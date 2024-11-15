@@ -9,6 +9,7 @@
                 <field name="start_date"/>
                 <field name="duration"/>
                 <field name="seats"/>
+                <field name="attendees_count"/>                        
                 <field name="state"/>
             </list>
         </field>
@@ -32,6 +33,9 @@
                         <field name="start_date"/>
                         <field name="duration"/>
                         <field name="seats"/>
+                        <field name="attendees_count"/>                        
+                        <field name="hours"/>
+                        <field name="end_date"/>
                     </group>
                     <group>
                         <field name="instructor_id" 
