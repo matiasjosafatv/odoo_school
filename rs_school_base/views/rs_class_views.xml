@@ -40,6 +40,24 @@
         </field>
     </record>
 
+    <!-- model.name search view -->
+    <record id="rs_class_view_search" model="ir.ui.view">
+        <field name="name">rs_class.view.search</field>
+        <field name="model">rs.class</field>
+        <field name="arch" type="xml">
+            <search string="Search Description">
+                <!-- Add your fields here -->
+                <field name="course_name"/>
+                <field name="responsible_id"/>
+
+                <searchpanel>
+                    <field name="responsible_id" select="multi" icon="fa-users" string="Course Taker" />
+                </searchpanel>
+
+            </search>
+        </field>
+    </record>
+
     <!-- Acción para el modelo rs.class -->
     <record id="rs_class_action" model="ir.actions.act_window">
         <field name="name">Courses</field>
