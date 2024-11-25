@@ -19,7 +19,7 @@
 #
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see http://www.gnu.org/licenses
-#    
+#
 #    Odoo and OpenERP is trademark of Odoo S.A.
 #
 ###############################################################################
@@ -51,6 +51,7 @@
     },
     'data': [
         'security/ir.model.access.csv',
+        'data/ir_sequence_data.xml',
         "views/rs_class_views.xml",
         "views/rs_registration_views.xml",
         "views/rs_student_views.xml",

@@ -18,7 +18,7 @@ class RsRegistration(models.Model):
 
 	course_id = fields.Many2one('rs.class', ondelete='cascade', string='Course', required=True)
 
-	attendee_ids = fields.Many2many('res.partner', string="Attendees")
+	attendee_ids = fields.Many2many('res.partner', string="Attendees", copy=False)
 
 	state = fields.Selection([('draft', 'Draft'), ('confirmed', 'Confirmed'), ('done','Done')])
 
@@ -112,3 +112,11 @@ class RsRegistration(models.Model):
 		result = super(RsRegistration, self).write(values)
 
 		return result
+
+	def copy_data(self, default=None):
+		default = dict(default or {})
+		vals_list = super().copy_data(default=default)
+		#import wdb;wdb.set_trace()
+		for vals in vals_list:
+			vals['session_name'] = f"{vals['session_name']} (copy)"
+		return vals_list
