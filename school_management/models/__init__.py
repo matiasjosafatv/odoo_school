@@ -1,0 +1,1 @@
+from . import student, teacher, subject, school_class, schedule
