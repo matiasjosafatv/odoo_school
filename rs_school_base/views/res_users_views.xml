@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- model.name inherit form view -->
+    <record id="res_users_location_form_view" model="ir.ui.view">
+        <field name="name">res.users.location.form.view</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tz']" position="before">
+                <!-- Add your fields here -->
+                <field name="rs_location"/>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

@@ -7,6 +7,8 @@
             <list string="Courses">
                 <field name="course_name"/>
                 <field name="responsible_id"/>
+                <field name="create_uid"/>
+                <field name="rs_location"/>
             </list>
         </field>
     </record>
@@ -22,6 +24,8 @@
                         <field name="course_name"/>
                         <field name="description"/>
                         <field name="responsible_id"/>
+                        <field name="create_uid"/>
+                        <field name="rs_location"/>
                     </group>
                     <notebook>
                         <page string="Sessions">
@@ -65,5 +69,5 @@
         <field name="view_mode">list,form</field>
     </record>
 
-   
+
 </odoo>

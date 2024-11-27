@@ -52,10 +52,14 @@
     'data': [
         'security/ir.model.access.csv',
         'data/ir_sequence_data.xml',
+        'data/ir_rule_data.xml',
+
         "views/rs_class_views.xml",
         "views/rs_registration_views.xml",
         "views/rs_student_views.xml",
         "views/rs_teacher_views.xml",
+        "views/res_users_views.xml",
+
         "views/rs_school_base_menu_views.xml",
     ],
     'demo': [
