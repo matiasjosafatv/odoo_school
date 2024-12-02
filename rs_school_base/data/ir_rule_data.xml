@@ -16,5 +16,38 @@
         </record>
 
 
+        <record id="rs_teacher_rule" model="ir.rule">
+            <field name="name">Allow modify teacher records on res_partner</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="global" eval="False" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_unlink" eval="True" />
+            <field name="domain_force">[('rs_teacher','=',True)]</field>
+            <field name="active" eval="True" />
+            <field name="groups" eval="[(4, ref('rs_school_base.rs_school_base_teachers_admin'))]"/>
+
+        </record>
+
+
+        <record id="rs_teacher_deny_rule" model="ir.rule">
+            <field name="name">Cant modify teacher records on res_partner</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="global" eval="False" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_unlink" eval="True" />
+            <field name="domain_force">[('rs_teacher','=',False)]</field>
+            <field name="active" eval="True" />
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+
+
+
+
+        </record>
+
+
     </data>
 </odoo>

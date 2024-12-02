@@ -50,7 +50,9 @@
         ],
     },
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
+
         'data/ir_sequence_data.xml',
         'data/ir_rule_data.xml',
 
