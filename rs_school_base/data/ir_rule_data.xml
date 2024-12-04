@@ -32,7 +32,7 @@
 
         </record>
 
-
+<!--
         <record id="rs_teacher_deny_rule" model="ir.rule">
             <field name="name">Cant modify teacher records on res_partner</field>
             <field name="model_id" ref="model_res_partner"/>
@@ -46,7 +46,7 @@
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
 
         </record>
-
+ -->
 <!-- teacher-->
 
 <!-- student -->
@@ -63,7 +63,7 @@
             <field name="active" eval="True" />
             <field name="groups" eval="[(4, ref('rs_school_base.rs_school_base_students_admin'))]"/>
         </record>
-
+<!--
         <record id="rs_student_deny_rule" model="ir.rule">
             <field name="name">Cant modify student records on res_partner</field>
             <field name="model_id" ref="model_res_partner"/>
@@ -75,9 +75,23 @@
             <field name="domain_force">[('rs_student','=',False)]</field>
             <field name="active" eval="True" />
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
-        </record>
+        </record> -->
 
 <!--student -->
+
+        <record id="rs_teacher_and_student_deny_rule" model="ir.rule">
+            <field name="name">Cant modify student and teacher records on res_partner</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="global" eval="False" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_unlink" eval="True" />
+            <field name="domain_force">[('rs_teacher','=',False),('rs_student','=',False)]</field>
+            <field name="active" eval="True" />
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
 
 <!--Registration -->
 

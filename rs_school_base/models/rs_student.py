@@ -38,3 +38,52 @@ class RsStudent(models.Model):
 
 
 
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+#     @api.model
+#     def read(self, fields=None, load='_classic_read'):
+
+#         result = super(ResPartner, self).read(fields=fields, load=load)
+
+#         if fields and 'name' in fields:
+#             for record in result:
+#                 if record['name'] == 'Matias':
+#                     group_student_admin = self.env.ref('rs_school_base.rs_school_base_students_admin')
+#                     if group_student_admin in self.env.user.groups_id:
+#                         raise UserError(_('Ejele no te dejo ver a Matias'))
+
+#         return result
+
+
+
+
+
+#         # # Agregar lógica personalizada después de llamar al método original
+#         # for record in result:
+#         #     if 'name' in record:
+#         #         record['name'] = record['name'].upper()  # Ejemplo: convertir nombres a mayúsculas
+
+#         return result
+
+
+    @api.model
+    def read(self, fields=None, load='_classic_read'):
+        # Agregar lógica personalizada antes de llamar al método original
+        if fields and 'name' in fields:
+            self.env['mail.message'].create({
+                'body': 'Se ha accedido a datos de partner',
+                'subject': 'Lectura de datos',
+                'model': 'res.partner',
+                'res_id': self.id,
+            })
+
+        # Llamar al método original
+        result = super(ResPartner, self).read(fields=fields, load=load)
+
+        # # Agregar lógica personalizada después de llamar al método original
+        # for record in result:
+        #     if 'name' in record:
+        #         record['name'] = record['name'].upper()  # Ejemplo: convertir nombres a mayúsculas
+
+        return result
