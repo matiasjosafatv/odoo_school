@@ -16,8 +16,32 @@
         <field name="comment">This user can manage tacher catalogs</field>
         <field name="category_id" ref="rs_school_base.rs_school_base_app"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="users" eval="[(5, ref('base.user_root'))]" />
+        <field name="users" eval="[(5, ref('base.user_root'))]"/>
     </record>
 
+
+    <record id="rs_school_base_students_admin" model="res.groups">
+        <field name="name">Student Administrator</field>
+        <field name="comment">This user can manage student catalogs</field>
+        <field name="category_id" ref="rs_school_base.rs_school_base_app"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(5, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="rs_course_manager" model="res.groups">
+        <field name="name">Registration Administrator</field>
+        <field name="comment">This group allows users to manage course registrations</field>
+        <field name="category_id" ref="rs_school_base.rs_school_base_app"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(5, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="rs_class_manager" model="res.groups">
+        <field name="name">Class Administrator</field>
+        <field name="comment">This group allows users to manage class</field>
+        <field name="category_id" ref="rs_school_base.rs_school_base_app"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="users" eval="[(5, ref('base.user_root'))]"/>
+    </record>
 
 </odoo>
