@@ -87,3 +87,44 @@ class ResPartner(models.Model):
         #         record['name'] = record['name'].upper()  # Ejemplo: convertir nombres a mayúsculas
 
         return result
+
+
+    def write(self, values):
+        """
+            Update all record(s) in recordset, with new value comes as {values}
+            return True on success, False otherwise
+
+            @param values: dict of new values to be set
+
+            @return: True on success, False otherwise
+        """
+        # import wdb;wdb.set_trace()
+        # group_student_admin = self.env.ref('rs_school_base.rs_school_base_students_admin')
+        # if group_student_admin in self.env.user.groups_id:
+        #     raise UserError(_('Ejele no te dejo escribir por que eres administrador de Estudiantes'))
+        #     return False
+        result = super(ResPartner, self).write(values)
+
+        return result
+
+
+    def unlink(self):
+        """
+            Delete all record(s) from recordset
+            return True on success, False otherwise
+
+            @return: True on success, False otherwise
+
+            #TODO: process before delete resource
+        """
+        import wdb;wdb.set_trace()
+        # group_student_admin = self.env.ref('rs_school_base.rs_school_base_students_admin')
+        # if group_student_admin in self.env.user.groups_id:
+        #     raise UserError(_('Ejele no te dejo borrar por que eres administrador de Estudiantes'))
+        #     return False
+        if self.env.user.id == 6:
+            raise UserError(_('Ejele no te dejo borrar por que eres usuario id 3'))
+            return False
+        result = super(ResPartner, self).unlink()
+
+        return result

@@ -12,7 +12,10 @@ class RsRegistration(models.Model):
     duration = fields.Float(digits=(6,2), help="Duration in days", default= 1.0)
     seats = fields.Integer(string="Number of seats")
     active = fields.Boolean(default=True)
-    color = fields.Integer()
+    color = fields.Integer(
+        groups="rs_school_base.rs_course_manager"
+
+    )
     instructor_id = fields.Many2one('res.partner', string='Course Instructor',
                                     domain=[('rs_teacher', '=', True)])
 

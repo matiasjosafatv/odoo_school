@@ -10,10 +10,11 @@
                 <field name="start_date"/>
                 <field name="duration"/>
                 <field name="seats"/>
-                <field name="attendees_count" optional="show" />                        
+                <field name="attendees_count" optional="show" />
+                <field name="color"/>
                 <field name="state"/>
                 <field name="attendee_ids" optional="hide" widget="many2many_tags" />
-                
+
             </list>
         </field>
     </record>
@@ -27,7 +28,7 @@
             <header>
                 <field name="active" invisible="1"/>
                 <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done" options="{'clickable': '1'}" />
-            
+
             </header>
                 <sheet>
                     <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
@@ -37,12 +38,13 @@
                         <field name="start_date"/>
                         <field name="duration"/>
                         <field name="seats"/>
-                        <field name="attendees_count"/>                        
+                        <field name="attendees_count"/>
                         <field name="hours"/>
                         <field name="end_date"/>
                     </group>
                     <group>
-                        <field name="instructor_id" 
+                        <field name="color"/>
+                        <field name="instructor_id"
                                 domain="[('rs_teacher', '=', True)]"
                                 context="{'default_rs_teacher': True, 'form_view_ref': 'rs_school_base.rs_teacher_view_form'}"/>
                         <field name="course_id"/>
@@ -59,19 +61,19 @@
         <field name="model">rs.registration</field>
         <field name="arch" type="xml">
             <search string="Search Description">
-                <field name="session_name" string="Instructor or Atendee" 
+                <field name="session_name" string="Instructor or Atendee"
                 filter_domain="['|', ('attendee_ids.name', 'ilike', self), ('instructor_id.name', 'ilike', self)]"
                 />
                 <field name="duration"/>
-                <field name="attendees_count"/>                        
-                <separator/>         
-                
-                <field name="instructor_id"/>                
+                <field name="attendees_count"/>
+                <separator/>
+
+                <field name="instructor_id"/>
                 <filter string="Duration >5"
                     name="filter_duration"
                     domain="[('duration','>',5)]"
                 />
-                
+
                 <filter string="Archived"
                     name="filter_archived"
                     domain="[('active', '=', False)]"
@@ -82,12 +84,12 @@
                     name="filter_status"
                     domain="[]"
                     context="{'group_by' : 'state'}"
-                    />           
-                    <separator/>         
-                    <filter string="Start Date" name="group_by_start_date"                        
+                    />
+                    <separator/>
+                    <filter string="Start Date" name="group_by_start_date"
                         context="{'group_by': 'start_date:week'}"
-                        />                    
-                        
+                        />
+
                 </group>
                 <searchpanel>
                     <field name="state" select="multi" icon="fa-cogs" string="State" />
@@ -106,5 +108,5 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    
+
 </odoo>
