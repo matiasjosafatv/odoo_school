@@ -22,7 +22,9 @@ class RsStudent(models.Model):
         ('o_positive', 'O+'),
         ('o_negative', 'O-'),
         ('ab_positive', 'AB+'),
-        ('ab_negative', 'AB-'),]
+        ('ab_negative', 'AB-'),],
+
+        groups = "rs_school_base.rs_school_base_students_admin"
     )
     student_account_number = fields.Char(string='Account Number',readonly=True)
 

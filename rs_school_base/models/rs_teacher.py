@@ -16,6 +16,12 @@ class RsTeacher(models.Model):
 
     teacher_account_number = fields.Char(string='Account Number',readonly=True)
 
+    phone = fields.Char(
+
+        groups="rs_school_base.rs_school_base_teachers_admin"
+    )
+
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:

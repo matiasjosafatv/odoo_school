@@ -13,15 +13,17 @@ class RsRegistration(models.Model):
     seats = fields.Integer(string="Number of seats")
     active = fields.Boolean(default=True)
     color = fields.Integer(
-        groups="rs_school_base.rs_course_manager"
+    groups="rs_school_base.rs_course_manager"
 
     )
     instructor_id = fields.Many2one('res.partner', string='Course Instructor',
-                                    domain=[('rs_teacher', '=', True)])
+                                    domain=[('rs_teacher', '=', True)],
+                                    )
 
     course_id = fields.Many2one('rs.class', ondelete='cascade', string='Course', required=True)
 
-    attendee_ids = fields.Many2many('res.partner', string="Attendees", copy=False)
+    attendee_ids = fields.Many2many('res.partner', string="Attendees", copy=False, groups="rs_school_base.rs_course_manager"
+)
 
     state = fields.Selection([('draft', 'Draft'), ('confirmed', 'Confirmed'), ('done','Done')])
 
