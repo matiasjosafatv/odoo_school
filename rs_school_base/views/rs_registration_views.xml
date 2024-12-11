@@ -27,7 +27,8 @@
             <form string="Registration">
             <header>
                 <field name="active" invisible="1"/>
-                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done" options="{'clickable': '1'}" />
+                <button name="action_set_done" type="object" string="Set Done"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"  />
 
             </header>
                 <sheet>

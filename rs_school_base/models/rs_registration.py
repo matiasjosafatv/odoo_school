@@ -123,3 +123,10 @@ class RsRegistration(models.Model):
         for vals in vals_list:
             vals['session_name'] = f"{vals['session_name']} (copy)"
         return vals_list
+
+
+
+    def action_set_done(self):
+        for record in self:
+            record.write( { 'state': 'done'})
+

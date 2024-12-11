@@ -117,7 +117,6 @@ class ResPartner(models.Model):
 
             #TODO: process before delete resource
         """
-        import wdb;wdb.set_trace()
         # group_student_admin = self.env.ref('rs_school_base.rs_school_base_students_admin')
         # if group_student_admin in self.env.user.groups_id:
         #     raise UserError(_('Ejele no te dejo borrar por que eres administrador de Estudiantes'))
