@@ -27,7 +27,22 @@
             <form string="Registration">
             <header>
                 <field name="active" invisible="1"/>
-                <button name="action_set_done" type="object" string="Set Done"/>
+                <button name="action_set_done" type="object" string="Set Done"
+                invisible="state in ['draft','done']"
+                class="oe_highlight"
+                data-hotkey="q"
+                />
+                <button name="action_set_confirmed" type="object" string="Set Confirmed"
+                invisible="state in ['confirmed','done']"
+                class="oe_highlight"
+                data-hotkey="q"
+                />
+
+                <button name="action_set_draft" type="object" string="Set Draft"
+                invisible="state in ['draft']"
+                class="oe_highlight"
+                data-hotkey="r"
+                />
                 <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"  />
 
             </header>

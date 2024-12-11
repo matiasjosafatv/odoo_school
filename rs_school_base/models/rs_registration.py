@@ -130,5 +130,17 @@ class RsRegistration(models.Model):
 
     def action_set_done(self):
         for record in self:
-            record.write( { 'state': 'done'})
+            if record.state == "confirmed":
+                record.write( { 'state': 'done'})
+
+
+    def action_set_confirmed(self):
+        for record in self:
+            record.write( { 'state': 'confirmed'})
+
+    def action_set_draft(self):
+        for record in self:
+            record.write( { 'state': 'draft'})
+
+
 
