@@ -11,5 +11,6 @@ class RSClass(models.Model):
 
     rs_location = fields.Selection(
         string='Location',
-        selection=[('one', 'Santa Ursula'), ('two', 'Avante')]
+        selection=[('one', 'Santa Ursula'), ('two', 'Avante')],
+        groups = "rs_school_base.rs_class_manager"
     )
