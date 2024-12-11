@@ -19,7 +19,23 @@
         <field name="model">rs.class</field>
         <field name="arch" type="xml">
             <form string="Course">
+            <header>
+                 <button name="%(rs_registration_action)d"
+                            type="action"
+                            string="Sessions"
+                            domain="[('course_id','=',active_id)]"
+                            />
+            </header>
                 <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_rs_registration_action"
+                                type="object"
+                                string="Sessions"
+                                />
+
+
+                </div>
+
                     <group>
                         <field name="course_name"/>
                         <field name="description"/>

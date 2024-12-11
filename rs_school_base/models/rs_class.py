@@ -14,3 +14,14 @@ class RSClass(models.Model):
         selection=[('one', 'Santa Ursula'), ('two', 'Avante')],
         groups = "rs_school_base.rs_class_manager"
     )
+
+    def action_rs_registration_action(self):
+        res = self.env.ref('rs_school_base.view_rs_registration_list')
+        return {
+                   "view_mode": 'list',
+                   'res_model': 'rs.registration',
+                   'type': 'ir.actions.act_window',
+                   'view_id': res.id,
+                   'target': 'new',
+                   'domain': [('session_ids','in',self.ids)],
+                   }
