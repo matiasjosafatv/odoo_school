@@ -15,13 +15,28 @@ class RSClass(models.Model):
         groups = "rs_school_base.rs_class_manager"
     )
 
-    def action_rs_registration_action(self):
+    def action_rs_registration_action_view(self):
         res = self.env.ref('rs_school_base.view_rs_registration_list')
         return {
                    "view_mode": 'list',
+                   'name': f'Registrations from {self.display_name}',
                    'res_model': 'rs.registration',
                    'type': 'ir.actions.act_window',
                    'view_id': res.id,
-                   'target': 'new',
-                   'domain': [('session_ids','in',self.ids)],
+                   'target': 'self',
+                   'context': {'default_course_id': self.id,
+                                  'default_session_name': 'New Course by Obj View',
+                                },
+                   'domain': [('course_id','in',self.ids)],
+
                    }
+
+    def action_rs_registration_action(self):
+        action = self.env.ref('rs_school_base.rs_registration_action')
+        action_dict = action._get_action_dict()
+        action_dict['context'] = {'default_course_id': self.id,
+                                  'default_session_name': 'New Course',
+        }
+        action_dict['domain'] = [('course_id','in',self.ids)]
+        return action_dict
+

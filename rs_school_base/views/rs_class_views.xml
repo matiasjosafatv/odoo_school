@@ -20,11 +20,16 @@
         <field name="arch" type="xml">
             <form string="Course">
             <header>
-                 <button name="%(rs_registration_action)d"
+                  <button name="%(rs_registration_action)d"
                             type="action"
-                            string="Sessions"
-                            domain="[('course_id','=',active_id)]"
+                            string="Sessions by Action"
+                            context="{'search_default_course_id': id,'default_course_id':id,'default_session_name':'New'}"
                             />
+                <button name="action_rs_registration_action_view"
+                    type="object"
+                    string="Sessions Obj by view"
+                    />
+
             </header>
                 <sheet>
                 <div class="oe_button_box" name="button_box">

@@ -77,6 +77,7 @@
         <field name="model">rs.registration</field>
         <field name="arch" type="xml">
             <search string="Search Description">
+                <field name="course_id"/>
                 <field name="session_name" string="Instructor or Atendee"
                 filter_domain="['|', ('attendee_ids.name', 'ilike', self), ('instructor_id.name', 'ilike', self)]"
                 />
