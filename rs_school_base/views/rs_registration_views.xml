@@ -4,7 +4,12 @@
         <field name="name">rs.registration.list</field>
         <field name="model">rs.registration</field>
         <field name="arch" type="xml">
-            <list string="Registrations">
+            <list string="Registrations"
+                decoration-danger="state not in ['draft','done','confirmed']"
+                decoration-success="state == 'draft'"
+                decoration-info="state == 'confirmed'"
+                decoration-muted="state == 'done'"
+            >
                 <field name="session_name"/>
                 <field name="instructor_id" optional="hide" />
                 <field name="start_date"/>
@@ -13,6 +18,19 @@
                 <field name="attendees_count" optional="show" />
                 <field name="color"/>
                 <field name="state"/>
+                <button name="action_set_draft" type="object" icon="fa-rotate-right"
+                                        invisible="state in ['draft']"
+                                        string="Draft"
+                />
+                <button name="action_set_confirmed" type="object" icon="fa-thumbs-up"
+                invisible="state not in ['draft']"
+                string="Confirm"
+                />
+
+                <button name="action_set_done" type="object" icon="fa-check"
+                invisible="state not in ['confirmed']"
+                string="Done"
+                />
                 <field name="attendee_ids" optional="hide" widget="many2many_tags" />
 
             </list>

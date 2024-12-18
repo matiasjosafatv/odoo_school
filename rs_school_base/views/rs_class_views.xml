@@ -23,7 +23,7 @@
                   <button name="%(rs_registration_action)d"
                             type="action"
                             string="Sessions by Action"
-                            context="{'search_default_course_id': id,'default_course_id':id,'default_session_name':'New'}"
+                            context="{'search_default_course_id': 1, 'default_course_id':id, 'default_session_name':'New by Action button'}"
                             />
                 <button name="action_rs_registration_action_view"
                     type="object"
@@ -38,6 +38,15 @@
                                 string="Sessions"
                                 />
 
+                    <button name="action_registration_action_two"
+                                type="object"
+                                confirm="You wish to see registration records?"
+                                class="oe_stat_button"
+                                icon="fa-thermometer"
+                                invisible="count_sessions == 0"
+                                >
+                                <field name="count_sessions" widget="statinfo" string="Sessions"/>
+                    </button>
 
                 </div>
 
@@ -50,13 +59,49 @@
                     </group>
                     <notebook>
                         <page string="Sessions">
-                            <field name="session_ids">
-                                <list string="Sessions">
+
+                             <field name="session_ids">
+                             <!-- decoration-success=""
+                                decoration-warning="" -->
+                                <list string="Sessions"
+                                decoration-danger="state not in ['draft','done','confirmed']"
+                                decoration-success="state == 'draft'"
+                                decoration-info="state == 'confirmed'"
+                                decoration-muted="state == 'done'"
+                                >
                                     <field name="session_name"/>
+                                    <field name="state"/>
+                                    <button name="action_set_draft" type="object" icon="fa-rotate-right"
+                                        invisible="state in ['draft']"
+                                        string="Draft"
+                                    />
+                                    <button name="action_set_confirmed" type="object" icon="fa-thumbs-up"
+                                    invisible="state not in ['draft']"
+                                    string="Confirm"
+                                    />
+
+                                    <button name="action_set_done" type="object" icon="fa-check"
+                                    invisible="state not in ['confirmed']"
+                                    string="Done"
+                                    />
                                     <field name="start_date"/>
                                     <field name="duration"/>
                                     <field name="seats"/>
                                 </list>
+
+                                <form string="Session" create="true" delete="true" edit="true">
+                                    <header>
+                                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"  />
+                                    </header>
+                                    <sheet>
+                                        <div class="oe_title">
+                                            <label for="session_name" class="oe_edit_only" />
+                                            <h1><field name="session_name" placeholder="Describe the item..." /></h1>
+                                        </div>
+
+                                    </sheet>
+                                </form>
+
                             </field>
                         </page>
                     </notebook>
